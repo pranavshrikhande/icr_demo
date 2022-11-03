@@ -1,0 +1,27 @@
+CREATE TABLE patientProfile(
+user_id INT,
+Bot_id INT UNIQUE KEY NOT NULL AUTO_INCREMENT,
+uuid VARCHAR(255),
+patientName VARCHAR(255),
+patientID INT,
+bloodPressure VARCHAR(255),
+age INT,
+weight INT,
+status_current  VARCHAR(255),
+PRIMARY KEY (patientID),
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
+
+CREATE TABLE conversionRecords(
+id INT AUTO_INCREMENT NOT NULL,
+patientID INT,
+uuid VARCHAR(255),
+ocrText LONGTEXT,
+img_name VARCHAR(255),
+req_status  VARCHAR(255),
+user_id INT,
+PRIMARY KEY (id),
+FOREIGN KEY (patientID) REFERENCES patientProfile(patientID)
+)
